@@ -13,3 +13,9 @@ div.ui.fluid.four.item.menu{
 div.ui.segment.pushable{
   height: 1103px !important;
 }
+
+div.ui.inverted.vertical.labeled.icon.ui.overlay.left.thin.visible.sidebar.menu{
+
+  height: 1060px !important;
+  
+}

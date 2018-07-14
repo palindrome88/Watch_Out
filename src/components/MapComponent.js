@@ -7,7 +7,6 @@ import '../App.css';
 export class MapContainer extends Component {
     constructor(props) {
         super(props);
-        
         this.state = {
             showingInfoWindow: false,
             activeMarker: {},
@@ -43,8 +42,7 @@ export class MapContainer extends Component {
         
         return (
             <div>
-                <Map style={{minWidth: "100px",minHeight: "1100px"}} google={this.props.google} zoom={13} className={"map"} initialCenter={{lat: 36.149937, lng: -86.812866}} >
-                
+                <Map style={{minWidth: "100px",minHeight: "1100px"}} google={this.props.google} zoom={13} className={"map"} initialCenter={{lat: 36.149937, lng: -86.812866}} > 
                 </Map>
             </div>
         );

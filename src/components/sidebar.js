@@ -16,8 +16,8 @@ export default class SidebarExampleDimmed extends Component {
     return (
       <div>
         
-
         <Sidebar.Pushable as={Segment}>
+          WATCH OUT!
           <Sidebar
             as={Menu}
             animation='overlay'
@@ -29,16 +29,16 @@ export default class SidebarExampleDimmed extends Component {
             width='thin'
           >
             <Menu.Item as='a'>
-              <Icon name='home' />
-              Home
+              <Icon name='bomb' />
+              Poo
             </Menu.Item>
             <Menu.Item as='a'>
-              <Icon name='gamepad' />
-              Games
+              <Icon name='umbrella' />
+              Flooded Area
             </Menu.Item>
             <Menu.Item as='a'>
-              <Icon name='camera' />
-              Channels
+              <Icon name='male' />
+              Stranger Danger
             </Menu.Item>
           </Sidebar>
 
