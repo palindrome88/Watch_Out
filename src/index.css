@@ -4,8 +4,12 @@ body {
   font-family: sans-serif;
 }
 
-div.ui.fluid.three.item.menu{
+div.ui.fluid.four.item.menu{
   position: fixed !important;
   bottom: 0 !important;
   width: 100% !important;
+}
+
+div.ui.segment.pushable{
+  height: 1000px !important;
 }
