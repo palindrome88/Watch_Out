@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
-
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import MapComponent from './MapComponent';
 export default class SidebarExampleDimmed extends Component {
   state = { visible: false }
 
@@ -43,6 +44,8 @@ export default class SidebarExampleDimmed extends Component {
 
           <Sidebar.Pusher dimmed={visible}>
             <Segment basic>
+            <MapComponent>
+                </MapComponent>
             <Menu fluid widths={4}>
                 <Menu.Item name='menu' active={activeItem === 'MENU '} onClick={this.handleButtonClick} />
                 
