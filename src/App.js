@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Menu } from 'semantic-ui-react';
 import { Route } from 'react-router-dom';
+import Sidebar from './components/sidebar';
+
 var $ = require("jquery");
 
 
@@ -32,11 +32,12 @@ class App extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu fluid widths={3}>
-        <Menu.Item name='menu' active={activeItem === 'MENU '} onClick={this.handleItemClick} />
-        <Menu.Item name='search' active={activeItem === 'SEARCH'} onClick={this.handleItemClick} />
-        <Menu.Item name='profile' active={activeItem === 'PROFILE'} onClick={this.handleItemClick} />
-      </Menu>
+      <div>
+        <Sidebar>
+
+        </Sidebar>
+
+      </div>
     );
   }
 }

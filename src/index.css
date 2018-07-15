@@ -4,8 +4,45 @@ body {
   font-family: sans-serif;
 }
 
-div.ui.fluid.three.item.menu{
+div.ui.fluid.four.item.menu{
+  display: flex !important;
   position: fixed !important;
   bottom: 0 !important;
   width: 100% !important;
+  justify-content: center !important;
+}
+
+div.ui.segment.pushable{
+  height: 1103px !important;
+}
+
+div.ui.inverted.vertical.labeled.icon.ui.overlay.left.thin.visible.sidebar.menu{
+
+  height: 1060px !important;
+  max-width: 300px !important;
+  
+}
+.ui.sidebar.visible { 
+
+  width: calc(1200px) !important;
+}
+
+.bars.icon{
+  font-size: 25px !important;
+}
+
+.search.icon{
+
+  font-size: 25px !important;
+}
+
+.user.icon{
+
+  font-size: 25px !important;
+}
+
+.sign-out.icon{
+
+    filter:invert(100%) !important;
+
 }
