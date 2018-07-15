@@ -17,5 +17,10 @@ div.ui.segment.pushable{
 div.ui.inverted.vertical.labeled.icon.ui.overlay.left.thin.visible.sidebar.menu{
 
   height: 1060px !important;
+  max-width: 300px !important;
   
+}
+.ui.sidebar.visible { 
+
+  width: calc(1200px) !important;
 }
