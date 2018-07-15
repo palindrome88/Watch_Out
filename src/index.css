@@ -40,3 +40,9 @@ div.ui.inverted.vertical.labeled.icon.ui.overlay.left.thin.visible.sidebar.menu{
 
   font-size: 25px !important;
 }
+
+.sign-out.icon{
+
+    filter:invert(100%) !important;
+
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { loginWithGoogle, logout  } from '../config/auth';
 import {rebase} from '../config/constants';
+import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react';
  
 
 class Login extends Component {
@@ -21,6 +22,11 @@ class Login extends Component {
 
     }
 
+    compositeLoginSubmitFunction() {
+      this.authenticate();
+      this.props.submit();
+
+    }
     componentDidMount () {
         console.log("login mounted");
         this.authListener = rebase.initializedApp.auth().onAuthStateChanged((user) =>{
@@ -64,8 +70,15 @@ class Login extends Component {
 
     render() {
         return(
-            <div className="logIn">
-                <button type="button" onClick={() => this.authenticate('google')} className="btn btn-outline-primary btn-lg">G Login</button>
+            <div>
+            <Menu.Item as='a'>
+              <i class="google icon" name='male'onClick={() => this.authenticate('google')}></i>
+              Login to Google!
+            </Menu.Item>
+            <Menu.Item as='a'>
+              <i class="sign-out alternate icon" name='bomb' onClick={() => this.logoutApp('google')}></i>
+              Google Logout 
+            </Menu.Item>
             </div>
         )
     }

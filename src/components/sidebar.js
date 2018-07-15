@@ -3,6 +3,7 @@ import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import MapComponent from './MapComponent';
 import Search from './search';
+import Login from './login';
 export default class SidebarExampleDimmed extends Component {
   constructor(props){
       super(props)
@@ -130,8 +131,7 @@ compositeFunction2 = () => {
                 <Menu fluid widths={4}>
                     <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
                     <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1}></i>
-                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} ></i>
-                    
+                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} ></i>    
                 </Menu>
                     
                   </Segment>
@@ -156,18 +156,9 @@ compositeFunction2 = () => {
                   visible={visible}
                   width='thin'
                 >
-                  <Menu.Item as='a'>
-                    <Icon name='male'onClick={this.handleButtonClick}  />
-                    Poo
-                  </Menu.Item>
-                  <Menu.Item as='a'>
-                    <Icon name='bomb'onClick={this.handleButtonClick}  />
-                    Flooded Area
-                  </Menu.Item>
-                  <Menu.Item as='a'>
-                    <Icon name='umbrella' onClick={this.handleButtonClick} />
-                    Stranger Danger
-                  </Menu.Item>
+                  <Login submit={this.handleButtonClick}>
+
+                  </Login>
                 </Sidebar>
       
                 <Sidebar.Pusher dimmed={visible}>
