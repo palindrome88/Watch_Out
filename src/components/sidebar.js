@@ -3,7 +3,9 @@ import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import MapComponent from './MapComponent';
 export default class SidebarExampleDimmed extends Component {
-  state = { visible: false }
+  state = {
+       visible: false
+    }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
 
@@ -29,15 +31,15 @@ export default class SidebarExampleDimmed extends Component {
             width='thin'
           >
             <Menu.Item as='a'>
-              <Icon name='bomb' />
+              <Icon name='bomb'onClick={this.handleButtonClick}  />
               Poo
             </Menu.Item>
             <Menu.Item as='a'>
-              <Icon name='umbrella' />
+              <Icon name='umbrella'onClick={this.handleButtonClick}  />
               Flooded Area
             </Menu.Item>
             <Menu.Item as='a'>
-              <Icon name='male' />
+              <Icon name='male' onClick={this.handleButtonClick} />
               Stranger Danger
             </Menu.Item>
           </Sidebar>
