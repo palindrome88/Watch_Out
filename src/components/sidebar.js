@@ -79,9 +79,11 @@ compositeFunction2 = () => {
                   <MapComponent>
                       </MapComponent>
                   <Menu fluid widths={4}>
-                    <Menu.Item name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} />
-                    <Menu.Item name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} />
-                    <Menu.Item name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} />
+                    
+                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
+                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1}></i>
+                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} ></i>
+                    
                   </Menu>
                     
                   </Segment>
@@ -126,9 +128,10 @@ compositeFunction2 = () => {
                   <MapComponent>
                       </MapComponent>
                 <Menu fluid widths={4}>
-                    <Menu.Item name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} />
-                    <Menu.Item name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} />
-                    <Menu.Item name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} />
+                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
+                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1}></i>
+                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} ></i>
+                    
                 </Menu>
                     
                   </Segment>
@@ -172,9 +175,9 @@ compositeFunction2 = () => {
                   <MapComponent>
                       </MapComponent>
                 <Menu fluid widths={4}>
-                    <Menu.Item name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} />
-                    <Menu.Item name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} />
-                    <Menu.Item name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} />
+                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
+                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1}></i>
+                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} ></i>   
                 </Menu>
                     
                   </Segment>
