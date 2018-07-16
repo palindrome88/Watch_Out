@@ -4,7 +4,7 @@ import { Input } from 'semantic-ui-react';
 
 
 export default class Search extends Component {
-    state = {} 
+    
 
     handleSubmit(e){
         if(e.keyCode === 13){
@@ -13,16 +13,16 @@ export default class Search extends Component {
           ReactDOM.findDOMNode(this.refs.newItem).value = '';
         }
       }
+      
     render(){
         
         return(
        
         <div class="ui input">
             <input type="text" 
-            placeholder="Search..."
             ref="newItem"
             className="form-control"
-            placeholder="New Item"
+            placeholder="A helpful note..."
             onKeyDown={this.handleSubmit.bind(this)} >
             </input>
             <button class="ui primary button" onClick={this.props.submit} >

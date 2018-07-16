@@ -1,51 +1,70 @@
 import React, { Component } from 'react';
 import {rebase} from '../config/constants';
-import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import { Icon,  Menu, Segment, Sidebar } from 'semantic-ui-react';
 import MapComponent from './MapComponent';
 import Search from './search';
 import Login from './login';
-export default class SidebarExampleDimmed extends Component {
-  constructor(props){
-      super(props)
-      this.state = {
-       visible: false,
-       windowPane: 0,
-    }
-    this.handleButtonClick.bind(this);
-}
+import GeoLocation from './Geolocation';
 
+
+
+
+export default class SidebarExampleDimmed extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            visible: false,
+            windowPane: 0,
+        }
+        this.handleButtonClick.bind(this);
+        this.handleGeolocation.bind(this);
+    }
+    
 handleButtonClick = () => this.setState({ visible: !this.state.visible })
 handleSidebarHide = () => this.setState({ visible: false })
+    
+    
+handleGeolocation = (item) => {
 
-  compositeFunction0 = () => {
+    console.log("Fired.", item);
+    
+        this.setState({
+            latitude: item.latitude,
+            longitude: item.longitude
+        }, console.log(this))
+}
+
+
+compositeFunction0 = () => {
       console.log("Panel MENU.");
       this.handleButtonClick();
       this.handleWindowPane0();
   }
 
-  compositeFunction1 = () => {
+compositeFunction1 = () => {
     console.log("Panel SEARCH.");
     this.handleButtonClick();
     this.handleWindowPane1();
 }
 
 compositeFunction2 = () => {
-    console.log("Panel PROFILE.");
-    this.handleButtonClick();
-    this.handleWindowPane2();
+        console.log("Panel PROFILE.");
+        this.handleButtonClick();
+        this.handleWindowPane2();
 }
 
 componentDidMount() {
-    rebase.syncState('items', {
-     context: this,
-     state: 'list',
-     asArray: true,
-     then() {
-       this.setState({ loading: false });
-     }
-   });
- }
+        rebase.syncState('items', {
+        context: this,
+        state: 'list',
+        asArray: true,
+        then() {
+        this.setState({ loading: false });
+        }
+    });
+}
+
+
 handleAddItem(newItem) {
       
     this.setState({
@@ -63,9 +82,11 @@ handleAddItem(newItem) {
     const { activeItem } = this.state
     const { visible } = this.state
 
+    
     if(this.state.windowPane === 0){ // MENU ----------
         return (
             <div>
+            <p id="demo"></p>
               
               <Sidebar.Pushable as={Segment}>
                 WATCH OUT! 0
@@ -91,6 +112,7 @@ handleAddItem(newItem) {
                     <Icon name='male' onClick={this.handleButtonClick} />
                     Stranger Danger
                   </Menu.Item>
+                  
                 </Sidebar>
       
                 <Sidebar.Pusher dimmed={visible}>
@@ -129,6 +151,9 @@ handleAddItem(newItem) {
                   visible={visible}
                   width='thin'
                 >
+                  <Menu.Item as='a'> {/*                    NAVIGATION                      */}
+                    <GeoLocation submit={this.handleGeolocation}></GeoLocation>
+                  </Menu.Item>
                   <Menu.Item as='a'>
                     <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)}></Search>
                   </Menu.Item>
