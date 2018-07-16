@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import {rebase} from '../config/constants';
+import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import MapComponent from './MapComponent';
 import Search from './search';
@@ -34,6 +35,23 @@ compositeFunction2 = () => {
     this.handleButtonClick();
     this.handleWindowPane2();
 }
+
+componentDidMount() {
+    rebase.syncState('items', {
+     context: this,
+     state: 'list',
+     asArray: true,
+     then() {
+       this.setState({ loading: false });
+     }
+   });
+ }
+handleAddItem(newItem) {
+      
+    this.setState({
+      list: this.state.list.concat([newItem])
+    });
+  }
 
   handleWindowPane0 = () => this.setState({ windowPane: 0 })
 
@@ -112,7 +130,7 @@ compositeFunction2 = () => {
                   width='thin'
                 >
                   <Menu.Item as='a'>
-                    <Search submit={this.handleButtonClick}></Search>
+                    <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)}></Search>
                   </Menu.Item>
                   <Menu.Item as='a'>
                     <Icon name='bomb'onClick={this.handleButtonClick}  />
@@ -156,9 +174,7 @@ compositeFunction2 = () => {
                   visible={visible}
                   width='thin'
                 >
-                  <Login submit={this.handleButtonClick}>
-
-                  </Login>
+                  <Login submit={this.handleButtonClick}></Login>
                 </Sidebar>
       
                 <Sidebar.Pusher dimmed={visible}>

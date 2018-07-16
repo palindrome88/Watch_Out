@@ -79,6 +79,10 @@ class Login extends Component {
               <i class="sign-out alternate icon" name='bomb' onClick={() => this.logoutApp('google')}></i>
               Google Logout 
             </Menu.Item>
+            <Menu.Item as='a'>
+              <i class="window close icon" name='bomb' onClick={this.props.submit}></i>
+              Close 
+            </Menu.Item>
             </div>
         )
     }
