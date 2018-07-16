@@ -5,6 +5,7 @@ import MapComponent from './MapComponent';
 import Search from './search';
 import Login from './login';
 import GeoLocation from './Geolocation';
+import { loginWithGoogle, logout  } from '../config/auth';
 
 
 
@@ -15,30 +16,93 @@ export default class SidebarExampleDimmed extends Component {
         this.state = {
             visible: false,
             windowPane: 0,
+            authed: false,
+            loading: true,
+            uid: null,
+            zip: '',
         }
         this.handleButtonClick.bind(this);
         this.handleGeolocation.bind(this);
+        
+        this.authenticate = this.authenticate.bind(this);
+        this.logoutApp = this.logoutApp.bind(this);
     }
     
 handleButtonClick = () => this.setState({ visible: !this.state.visible })
 handleSidebarHide = () => this.setState({ visible: false })
     
-    
+
+
+compositeLoginSubmitFunction() {
+  this.authenticate();
+ 
+
+}
+componentDidMount () {
+    console.log("login mounted");
+    this.authListener = rebase.initializedApp.auth().onAuthStateChanged((user) =>{
+  
+      if (user) {
+        this.setState({
+          authed: true,
+          loading: false,
+          uid: user.uid,
+        });
+        //get DB stuff for user here
+      } else {
+        this.setState({
+          authed: false,
+          loading: false,
+          uid: null,
+        })
+      }
+    })
+    rebase.syncState('items', {
+      context: this,
+      state: 'list',
+      asArray: true,
+      then() {
+      this.setState({ loading: false });
+      }
+  });
+  }
+ 
+
+  componentWillUnmount () {
+    console.log("login will unmount");
+    this.authListener();
+  }
+
+  authenticate(){
+    console.log('authentication function running');
+    loginWithGoogle()
+    .then(() => {
+        this.setState({
+            authed: true
+        });
+    }, console.log("To check", this.state));
+  }
+
+  logoutApp(){
+    console.log('logout function running');
+    logout();
+  }
+
 handleGeolocation = (item) => {
 
-    console.log("Fired.", item);
+    console.log("Fired.", this.state);
     this.setState({
       latitude: item.latitude,
       longitude: item.longitude
   })
     base.push('coordinates', {
-      data: {JFSHE2345: {lat: JSON.stringify(item.latitude), long: JSON.stringify(item.longitude)}},
+      data: { [this.state.uid] : {lat: JSON.stringify(item.latitude), long: JSON.stringify(item.longitude)}},
       then(err){
         console.log(err);
     }
-  });
+  }, console.log(this.state.uid));
 
-    
+    //[this.state.user.Nb.uid]
 }
 
 
@@ -60,16 +124,16 @@ compositeFunction2 = () => {
         this.handleWindowPane2();
 }
 
-componentDidMount() {
-        rebase.syncState('items', {
-        context: this,
-        state: 'list',
-        asArray: true,
-        then() {
-        this.setState({ loading: false });
-        }
-    });
-}
+// componentDidMount() {
+//         rebase.syncState('items', {
+//         context: this,
+//         state: 'list',
+//         asArray: true,
+//         then() {
+//         this.setState({ loading: false });
+//         }
+//     });
+// }
 
 
 
@@ -78,6 +142,7 @@ handleAddItem(newItem) {
     this.setState({
       list: this.state.list.concat([newItem])
     });
+    
   }
 
   handleWindowPane0 = () => this.setState({ windowPane: 0 })
@@ -160,10 +225,10 @@ handleAddItem(newItem) {
                   width='thin'
                 >
                   <Menu.Item as='a'> {/*                    NAVIGATION                      */}
-                    <GeoLocation submit={this.handleGeolocation}></GeoLocation>
+                    <GeoLocation submit={this.handleGeolocation} ></GeoLocation>
                   </Menu.Item>
                   <Menu.Item as='a'>
-                    <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)}></Search>
+                    <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)} state={this.state}></Search>
                   </Menu.Item>
                   <Menu.Item as='a'>
                     <Icon name='bomb'onClick={this.handleButtonClick}  />
@@ -207,7 +272,18 @@ handleAddItem(newItem) {
                   visible={visible}
                   width='thin'
                 >
-                  <Login submit={this.handleButtonClick}></Login>
+                  <Menu.Item as='a'>
+              <i class="google icon" name='male'onClick={() => this.authenticate('google')} credentials={this.state}></i>
+                Login to Google!
+                </Menu.Item>
+                <Menu.Item as='a'>
+                  <i class="sign-out alternate icon" name='bomb' onClick={() => this.logoutApp('google')}></i>
+                  Google Logout 
+                </Menu.Item>
+                <Menu.Item as='a'>
+                  <i class="window close icon" name='bomb' onClick={this.handleButtonClick}></i>
+                  Close 
+                </Menu.Item>
                 </Sidebar>
       
                 <Sidebar.Pusher dimmed={visible}>
