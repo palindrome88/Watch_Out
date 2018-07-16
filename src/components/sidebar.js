@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {rebase} from '../config/constants';
+import {rebase, base} from '../config/constants';
 import { Icon,  Menu, Segment, Sidebar } from 'semantic-ui-react';
 import MapComponent from './MapComponent';
 import Search from './search';
@@ -27,11 +27,18 @@ handleSidebarHide = () => this.setState({ visible: false })
 handleGeolocation = (item) => {
 
     console.log("Fired.", item);
+    this.setState({
+      latitude: item.latitude,
+      longitude: item.longitude
+  })
+    base.push('coordinates', {
+      data: {JFSHE2345: {lat: JSON.stringify(item.latitude), long: JSON.stringify(item.longitude)}},
+      then(err){
+        console.log(err);
+    }
+  });
+
     
-        this.setState({
-            latitude: item.latitude,
-            longitude: item.longitude
-        }, console.log(this))
 }
 
 
@@ -63,6 +70,7 @@ componentDidMount() {
         }
     });
 }
+
 
 
 handleAddItem(newItem) {

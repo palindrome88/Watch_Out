@@ -1,5 +1,6 @@
 import Rebase from 're-base'
 import firebase from 'firebase'
+import database from 'firebase/database'
 
 
 var config = {
@@ -10,10 +11,13 @@ var config = {
     storageBucket: "watch-out-81324.appspot.com",
     messagingSenderId: "315113657848"
   };
-const app = firebase.initializeApp(config)
+const app = firebase.initializeApp(config);
 
 
 export const rebase = Rebase.createClass(app.database());
+
+export const db = firebase.database(app);
+export const base = Rebase.createClass(db);
 
 // //add the authProvides your app needs: google, facebook, twitter, github,
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
