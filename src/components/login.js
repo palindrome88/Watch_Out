@@ -19,6 +19,7 @@ class Login extends Component {
 
           this.authenticate = this.authenticate.bind(this);
           this.logoutApp = this.logoutApp.bind(this);
+          this.credentials.bind(this);
 
     }
 
@@ -47,6 +48,11 @@ class Login extends Component {
           }
         })
       }
+      credentials(event){
+
+        this.props.credentials(this.state);
+        event.preventDefault();
+      }
 
       componentWillUnmount () {
         console.log("login will unmount");
@@ -60,7 +66,7 @@ class Login extends Component {
             this.setState({
                 authed: true
             });
-        });
+        }, console.log("To check", this.state));
       }
 
       logoutApp(){
@@ -72,12 +78,16 @@ class Login extends Component {
         return(
             <div>
             <Menu.Item as='a'>
-              <i class="google icon" name='male'onClick={() => this.authenticate('google')}></i>
+              <i class="google icon" name='male'onClick={() => this.authenticate('google')} credentials={this.state}></i>
               Login to Google!
             </Menu.Item>
             <Menu.Item as='a'>
               <i class="sign-out alternate icon" name='bomb' onClick={() => this.logoutApp('google')}></i>
               Google Logout 
+            </Menu.Item>
+            <Menu.Item as='a'>
+              <i class="window close icon" name='bomb' onClick={this.props.submit}></i>
+              Close 
             </Menu.Item>
             </div>
         )
