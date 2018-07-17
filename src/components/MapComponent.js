@@ -57,26 +57,26 @@ export class MapContainer extends Component {
             );
         }
 
-        if(this.props.firebaseLoaded){
-            return (
-                <div>
-                    <Map style={{minWidth: "100px",minHeight: "1100px"}} google={this.props.google} zoom={13} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
-                    {
-                       this.props.firebaseData.map((item, index) => (
+        // if(this.props.firebaseLoaded){
+        //     return (
+        //         <div>
+        //             <Map style={{minWidth: "100px",minHeight: "1100px"}} google={this.props.google} zoom={13} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
+        //             {
+        //                this.props.firebaseData.map((item, index) => (
                        
-                            <Marker key={index} title={`${item.Obstacle}`} 
-                            onClick={this.onMarkerClick} 
-                            position={{ lat: parseFloat(item.lat), lng: parseFloat(item.long) }} 
-                            />
+        //                     <Marker key={index} title={`${item.Obstacle}`} 
+        //                     onClick={this.onMarkerClick} 
+        //                     position={{ lat: parseFloat(item.lat), lng: parseFloat(item.long) }} 
+        //                     />
                         
-                         ))
-                     }
+        //                  ))
+        //              }
                     
                     
-                    </Map>
-                </div>
-            );
-        }
+        //             </Map>
+        //         </div>
+        //     );
+        // }
 
         if(this.props.apiCalled && this.props.firebaseLoaded){
 

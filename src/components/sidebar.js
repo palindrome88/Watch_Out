@@ -31,11 +31,14 @@ export default class SidebarExampleDimmed extends Component {
         this.logoutApp = this.logoutApp.bind(this);
     }
     
-handleButtonClick = () => this.setState({ visible: !this.state.visible })
+handleButtonClick = () => {
+  this.setState({ visible: !this.state.visible });
+
+  ///// API Call Data
+ 
+}
 handleSidebarHide = () => this.setState({ visible: false })
     
-
-
 
 
 compositeLoginSubmitFunction() {
@@ -79,7 +82,7 @@ componentDidMount () {
     context: this,
     asArray: true,
     then(data){
-        console.log("Raw Data", data, this.props.uid);
+        console.log("Raw Data", data, this.state.uid);
       data = Object.values(data);
       data = Object.values(data);
       data = Object.values(data);
@@ -95,30 +98,7 @@ componentDidMount () {
       });
       
     }
-    
   });
-
-  ///// API Call Data
-//   fetch(`${urlString}`, {
-//     method: "GET",
-//     data: {
-//         "$limit": 100,
-//         "$$app_token": "r1zPUd6qffmC6asW1Y8pPPhuj"
-//     },
-//     header: {
-//         "Access-Control-Allow-Origin": "*"
-//     }
-// }).then((results) => {
-//     console.log("my result", results);
-//     this.setState({
-//         apiData: results,
-//         apiCalled: true
-        
-//     });
-//     return results.json();
-// })
-
-
   }
  
 
@@ -225,8 +205,8 @@ handleAddItem(newItem) {
                     Flooded Area
                   </Menu.Item>
                   <Menu.Item as='a'>
-                    <Icon name='male' onClick={this.handleButtonClick} />
-                    Stranger Danger
+                  <i class="window close icon" onClick={this.handleButtonClick} />
+                    Close
                   </Menu.Item>
                   
                 </Sidebar>
@@ -278,8 +258,8 @@ handleAddItem(newItem) {
                     Flooded Area
                   </Menu.Item>
                   <Menu.Item as='a'>
-                    <Icon name='umbrella' onClick={this.handleButtonClick} />
-                    Stranger Danger
+                    <i class="window close icon" onClick={this.handleButtonClick} />
+                    Close
                   </Menu.Item>
                 </Sidebar>
       
