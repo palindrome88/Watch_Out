@@ -8,7 +8,7 @@ import GeoLocation from './Geolocation';
 import { loginWithGoogle, logout  } from '../config/auth';
 
 var $ = require("jquery");
-var temp;
+
 
 
 
@@ -26,6 +26,7 @@ export default class SidebarExampleDimmed extends Component {
         this.handleButtonClick.bind(this);
         this.handleGeolocation.bind(this);
         
+        
         this.authenticate = this.authenticate.bind(this);
         this.logoutApp = this.logoutApp.bind(this);
     }
@@ -36,26 +37,7 @@ handleSidebarHide = () => this.setState({ visible: false })
 
 
 
-getMapData(){
-  base.fetch('coordinates', {
-    context: this,
-    asArray: true,
-    then(data){
-      data = Object.values(data);
-      data = Object.values(data);
-      data = Object.values(data);
-      data.forEach((item)=>{
-        temp += Object.keys(item)[0];
-        // if(Object.keys(item)[0].includes(JSON.stringify(this.state.uid))){
-        //   console.log("Found!");
-        // }
-      });
-      
-    }
-  });
 
-  console.log(temp);
-}
 compositeLoginSubmitFunction() {
   this.authenticate();
  
@@ -129,6 +111,7 @@ handleGeolocation = (item) => {
 
     
 }
+
 
 
 compositeFunction0 = () => {
@@ -237,8 +220,8 @@ handleAddItem(newItem) {
                   visible={visible}
                   width='thin'
                 >
-                  <Menu.Item as='a'> {/*                    NAVIGATION                      */}
-                    <GeoLocation submit={this.handleGeolocation} ></GeoLocation>
+                  <Menu.Item as='a'> {/*                    NAVIGATION                       */}
+                    <GeoLocation submit={this.handleGeolocation}  ></GeoLocation>
                   </Menu.Item>
                   <Menu.Item as='a'>
                     <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)} state={this.state}></Search>
@@ -255,7 +238,7 @@ handleAddItem(newItem) {
       
                 <Sidebar.Pusher dimmed={visible}>
                   <Segment basic>
-                  <MapComponent>
+                  <MapComponent uid={this.state.uid}>
                       </MapComponent>
                 <Menu fluid widths={4}>
                     <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
