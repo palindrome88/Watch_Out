@@ -30,26 +30,7 @@ export class MapContainer extends Component {
         console.log("Rendered", this.props.data);
        console.log("Temp", temp);
     }
-    componentDidMount(){
-        setTimeout(fetch(`${urlString}`, {
-            method: "GET",
-            data: {
-                "$limit": 100,
-                "$$app_token": "r1zPUd6qffmC6asW1Y8pPPhuj"
-            },
-            header: {
-                "Access-Control-Allow-Origin": "*"
-            }
-        }).then((results) => {
-            console.log("my result", results);
-            return results.json();
-            this.setState({
-                dataArr: results,
-                apiCalled: true
-            });
-
-        }), 10000 )
-    }
+   
     getMapData(){
 
         base.fetch('coordinates', {
@@ -84,7 +65,26 @@ export class MapContainer extends Component {
             showingInfoWindow: true 
         });
     }
+    fetchAPI(){
+        fetch(`${urlString}`, {
+            method: "GET",
+            data: {
+                "$limit": 100,
+                "$$app_token": "r1zPUd6qffmC6asW1Y8pPPhuj"
+            },
+            header: {
+                "Access-Control-Allow-Origin": "*"
+            }
+        }).then((results) => {
+            console.log("my result", results);
+            return results.json();
+            this.setState({
+                dataArr: results,
+                apiCalled: true
+            });
 
+        })
+    }
 
 
     render() {
@@ -92,7 +92,7 @@ export class MapContainer extends Component {
             return <div>Loading...</div>
         }
         this.getMapData();
-        
+        this.fetchAPI();
         if(!this.state.apiCalled){
             return (
                 <div>
