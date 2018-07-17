@@ -14,11 +14,17 @@
 Ryan Brisentine
 </div>
 ________________________________________
+
+
 How to Install Watch Out
 1.	Clone the Watch Out Repo to your local server using git clone https://github.com/palindrome88/Watch_Out.git in your terminal
 2.	This app is compiled with React JS. Inside your terminal, enter npm install
 3.	Once installed, enter npm start in the terminal, which will load the browser with Watch Out
+
+
 ________________________________________
+
+
 Using Watch Out
 1.	Utilizing a mobile or desktop computer, open the app.
 2.	The app will request geolocation services.
@@ -26,12 +32,18 @@ Using Watch Out
 4.	Log common occurences on your walkabout.
 5.	Save/Delete your everyday interactions.
 
-________________________________________
-Challenge Statement
-How might we offer an easy to use web application that encourages safe enjoyment of Nashville’s parks and recreational areas?
 
 ________________________________________
-Minimum Viable Product
+
+**Challenge Statement**
+
+_How might we offer an easy to use web application that encourages safe enjoyment of Nashville’s parks and recreational areas?_
+
+________________________________________
+
+
+**Minimum Viable Product**
+
 1.	Render Modals
 2.	Google Map
 3.	Render points on a Map
@@ -40,8 +52,12 @@ Minimum Viable Product
 6.	Login to Google
 7.	Log Out of Google
 8.	Marker of Nearby Nashville Park
+
+
 ________________________________________
-Next Iteration Goals (v2)
+
+
+**Next Sprint Iteration Goals **
 
 1. User Profiles
 2. Push Notifications of pending obstacle
