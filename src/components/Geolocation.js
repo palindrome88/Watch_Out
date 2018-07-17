@@ -18,7 +18,7 @@ class Geolocation extends React.Component {
             <tbody > 
               <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
               <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
-              <i class="bars icon" onClick={()=>{setTimeout(this.props.submit(this.props.coords), 10000)}} ></i>
+              <i class="bars icon" onClick={()=>{setTimeout(this.props.submit(this.props.coords), 1000)}} ></i>
             </tbody>
           </table>
           

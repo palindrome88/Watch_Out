@@ -47,6 +47,8 @@ componentDidMount () {
           authed: true,
           loading: false,
           uid: user.uid,
+          name: user.displayName,
+          email: user.email
         });
         //get DB stuff for user here
       } else {
@@ -96,9 +98,9 @@ handleGeolocation = (item) => {
       longitude: item.longitude
   })
     base.push('coordinates', {
-      data: { [this.state.uid] : {lat: JSON.stringify(item.latitude), long: JSON.stringify(item.longitude)}},
+      data: { [this.state.uid] : {email: this.state.email, lat: JSON.stringify(item.latitude), long: JSON.stringify(item.longitude)}},
       then(err){
-        console.log(err);
+        console.log("The result is this", err);
     }
   }, console.log(this.state.uid));
 
@@ -124,23 +126,33 @@ compositeFunction2 = () => {
         this.handleWindowPane2();
 }
 
-// componentDidMount() {
-//         rebase.syncState('items', {
-//         context: this,
-//         state: 'list',
-//         asArray: true,
-//         then() {
-//         this.setState({ loading: false });
-//         }
-//     });
-// }
-
-
 
 handleAddItem(newItem) {
-      
-    this.setState({
-      list: this.state.list.concat([newItem])
+      // THIS IS WHERE YOU ARE.
+  // firebase.database().ref("coordinates")
+  // .orderByChild("username")
+  // .equalTo("Micheal")
+  // .once("value", function (snapshot) {
+
+  //   var key;
+
+  //   snapshot.forEach(function (childSnapshot) {
+  //     key = childSnapshot.key;
+  //     return true; // Cancel further enumeration.
+  //   });
+
+  //   if (key) {
+  //     console.log("Found user: " + key);
+  //   } else {
+  //     console.log("User not found.");
+  //   }
+  // });
+
+    base.update('coordinates', {
+      data: {name: newItem},
+      then(err){
+        console.log(err);
+      }
     });
     
   }
