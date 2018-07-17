@@ -1,5 +1,7 @@
 <div align="center"> 
 	
+![alt text](http://d30y9cdsu7xlg0.cloudfront.net/png/43299-200.png)
+	
 # WATCH OUT
 
 ## Your application for navigating parks safely.
