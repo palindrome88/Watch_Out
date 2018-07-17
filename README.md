@@ -1,15 +1,18 @@
-![alt text](http://d30y9cdsu7xlg0.cloudfront.net/png/43299-200.png) 
+<div align="center"> 
+	
 # WATCH OUT
 
-## Your application for navigating parks safely
+## Your application for navigating parks safely.
 
 
 
 
-## Developer
+### Developer
 
 ![alt text](https://avatars1.githubusercontent.com/u/11411693?s=460&v=4)
+
 Ryan Brisentine
+</div>
 ________________________________________
 How to Install Watch Out
 1.	Clone the Watch Out Repo to your local server using git clone https://github.com/palindrome88/Watch_Out.git in your terminal
@@ -41,5 +44,5 @@ ________________________________________
 Next Iteration Goals (v2)
 
 1. User Profiles
-2. 
-3.
+2. Push Notifications of pending obstacle
+
