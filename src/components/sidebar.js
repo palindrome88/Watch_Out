@@ -98,13 +98,13 @@ handleGeolocation = (item) => {
       longitude: item.longitude
   })
     base.push('coordinates', {
-      data: { [this.state.uid] : {email: this.state.email, lat: JSON.stringify(item.latitude), long: JSON.stringify(item.longitude)}},
+      data: { [this.state.uid] : {Obstacle: this.state.Obstacle, email: this.state.email, lat: JSON.stringify(item.latitude), long: JSON.stringify(item.longitude)}},
       then(err){
         console.log("The result is this", err);
     }
   }, console.log(this.state.uid));
 
-    //[this.state.user.Nb.uid]
+    
 }
 
 
@@ -128,32 +128,17 @@ compositeFunction2 = () => {
 
 
 handleAddItem(newItem) {
-      // THIS IS WHERE YOU ARE.
-  // firebase.database().ref("coordinates")
-  // .orderByChild("username")
-  // .equalTo("Micheal")
-  // .once("value", function (snapshot) {
+     
+  this.setState({
+    Obstacle: JSON.stringify(newItem)
+  });
 
-  //   var key;
-
-  //   snapshot.forEach(function (childSnapshot) {
-  //     key = childSnapshot.key;
-  //     return true; // Cancel further enumeration.
-  //   });
-
-  //   if (key) {
-  //     console.log("Found user: " + key);
-  //   } else {
-  //     console.log("User not found.");
-  //   }
-  // });
-
-    base.update('coordinates', {
-      data: {name: newItem},
-      then(err){
-        console.log(err);
-      }
-    });
+    // base.update('coordinates', {
+    //   data: {name: newItem},
+    //   then(err){
+    //     console.log(err);
+    //   }
+    // });
     
   }
 
