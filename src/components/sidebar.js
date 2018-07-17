@@ -7,6 +7,8 @@ import Login from './login';
 import GeoLocation from './Geolocation';
 import { loginWithGoogle, logout  } from '../config/auth';
 
+var $ = require("jquery");
+var temp;
 
 
 
@@ -33,6 +35,27 @@ handleSidebarHide = () => this.setState({ visible: false })
     
 
 
+
+getMapData(){
+  base.fetch('coordinates', {
+    context: this,
+    asArray: true,
+    then(data){
+      data = Object.values(data);
+      data = Object.values(data);
+      data = Object.values(data);
+      data.forEach((item)=>{
+        temp += Object.keys(item)[0];
+        // if(Object.keys(item)[0].includes(JSON.stringify(this.state.uid))){
+        //   console.log("Found!");
+        // }
+      });
+      
+    }
+  });
+
+  console.log(temp);
+}
 compositeLoginSubmitFunction() {
   this.authenticate();
  
@@ -132,13 +155,6 @@ handleAddItem(newItem) {
   this.setState({
     Obstacle: JSON.stringify(newItem)
   });
-
-    // base.update('coordinates', {
-    //   data: {name: newItem},
-    //   then(err){
-    //     console.log(err);
-    //   }
-    // });
     
   }
 
@@ -228,7 +244,7 @@ handleAddItem(newItem) {
                     <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)} state={this.state}></Search>
                   </Menu.Item>
                   <Menu.Item as='a'>
-                    <Icon name='bomb'onClick={this.handleButtonClick}  />
+                    <Icon name='bomb'onClick={this.getMapData}  />
                     Flooded Area
                   </Menu.Item>
                   <Menu.Item as='a'>
