@@ -8,7 +8,7 @@ import GeoLocation from './Geolocation';
 import { loginWithGoogle, logout  } from '../config/auth';
 
 var $ = require("jquery");
-
+let urlString =`https://data.nashville.gov/resource/xbru-cfzi.json?`
 
 
 
@@ -72,6 +72,53 @@ componentDidMount () {
       this.setState({ loading: false });
       }
   });
+
+  //// Firebase Map Data
+
+  base.fetch('coordinates', {
+    context: this,
+    asArray: true,
+    then(data){
+        console.log("Raw Data", data, this.props.uid);
+      data = Object.values(data);
+      data = Object.values(data);
+      data = Object.values(data);
+      data.forEach((item)=>{
+
+        console.log(Object.values(item)[0]);
+        //temp.push(Object.keys(item)[0]);
+        
+        this.setState({
+            firebaseLoaded: true,
+            firebaseData: Object.values(item)[0]
+        });
+      });
+      
+    }
+    
+  });
+
+  ///// API Call Data
+//   fetch(`${urlString}`, {
+//     method: "GET",
+//     data: {
+//         "$limit": 100,
+//         "$$app_token": "r1zPUd6qffmC6asW1Y8pPPhuj"
+//     },
+//     header: {
+//         "Access-Control-Allow-Origin": "*"
+//     }
+// }).then((results) => {
+//     console.log("my result", results);
+//     this.setState({
+//         apiData: results,
+//         apiCalled: true
+        
+//     });
+//     return results.json();
+// })
+
+
   }
  
 
@@ -186,7 +233,7 @@ handleAddItem(newItem) {
       
                 <Sidebar.Pusher dimmed={visible}>
                   <Segment basic>
-                  <MapComponent>
+                  <MapComponent uid={this.state.uid}  apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
                       </MapComponent>
                   <Menu fluid widths={4}>
                     
@@ -238,7 +285,7 @@ handleAddItem(newItem) {
       
                 <Sidebar.Pusher dimmed={visible}>
                   <Segment basic>
-                  <MapComponent uid={this.state.uid}>
+                  <MapComponent uid={this.state.uid}  apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
                       </MapComponent>
                 <Menu fluid widths={4}>
                     <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
@@ -284,7 +331,7 @@ handleAddItem(newItem) {
       
                 <Sidebar.Pusher dimmed={visible}>
                   <Segment basic>
-                  <MapComponent>
+                  <MapComponent uid={this.state.uid}  apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
                       </MapComponent>
                 <Menu fluid widths={4}>
                     <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>

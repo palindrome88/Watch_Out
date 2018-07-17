@@ -31,32 +31,7 @@ export class MapContainer extends Component {
        console.log("Temp", temp);
     }
    
-    getMapData(){
-
-        base.fetch('coordinates', {
-          context: this,
-          asArray: true,
-          then(data){
-              console.log("Raw Data", data, this.props.uid);
-            data = Object.values(data);
-            data = Object.values(data);
-            data = Object.values(data);
-            data.forEach((item)=>{
-      
-              console.log(Object.values(item)[0]);
-              //temp.push(Object.keys(item)[0]);
-              temp.push(Object.values(item)[0]);
-              this.setState({
-                  firebaseLoaded: true
-              });
-            });
-            
-          }
-          
-        });
-      
-        
-      }
+    
     /* marker event handler */
     onMarkerClick(props, marker, e) {
         this.setState({
@@ -65,35 +40,15 @@ export class MapContainer extends Component {
             showingInfoWindow: true 
         });
     }
-    fetchAPI(){
-        fetch(`${urlString}`, {
-            method: "GET",
-            data: {
-                "$limit": 100,
-                "$$app_token": "r1zPUd6qffmC6asW1Y8pPPhuj"
-            },
-            header: {
-                "Access-Control-Allow-Origin": "*"
-            }
-        }).then((results) => {
-            console.log("my result", results);
-            return results.json();
-            this.setState({
-                dataArr: results,
-                apiCalled: true
-            });
-
-        })
-    }
+    
 
 
     render() {
         if (!this.props.google) {
             return <div>Loading...</div>
         }
-        this.getMapData();
-        this.fetchAPI();
-        if(!this.state.apiCalled){
+      
+        if(!this.props.apiCalled){
             return (
                 <div>
                     <Map style={{minWidth: "100px",minHeight: "1100px"}} google={this.props.google} zoom={13} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
@@ -102,12 +57,12 @@ export class MapContainer extends Component {
             );
         }
 
-        if(this.state.firebaseLoaded){
+        if(this.props.firebaseLoaded){
             return (
                 <div>
                     <Map style={{minWidth: "100px",minHeight: "1100px"}} google={this.props.google} zoom={13} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
                     {
-                       temp.map((item, index) => (
+                       this.props.firebaseData.map((item, index) => (
                        
                             <Marker key={index} title={`${item.Obstacle}`} 
                             onClick={this.onMarkerClick} 
@@ -123,7 +78,7 @@ export class MapContainer extends Component {
             );
         }
 
-        if(this.state.apiCalled && this.state.firebaseLoaded){
+        if(this.props.apiCalled && this.props.firebaseLoaded){
 
         }
     }
