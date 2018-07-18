@@ -22,12 +22,10 @@ export default class Search extends Component {
             <input type="text" 
             ref="newItem"
             className="form-control"
-            placeholder="A helpful note..."
+            placeholder="Press enter to submit"
             onKeyDown={this.handleSubmit.bind(this)} >
             </input>
-            <button class="ui primary button" onClick={this.props.submit} >
-            Submit
-            </button>
+            
         </div>
           
         )

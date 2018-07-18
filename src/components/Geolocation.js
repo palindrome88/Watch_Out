@@ -1,6 +1,6 @@
 import React from 'react';
 import {geolocated, geoPropTypes} from 'react-geolocated';
-
+import {Icon} from'semantic-ui-react';
 class Geolocation extends React.Component {
 
    
@@ -18,7 +18,7 @@ class Geolocation extends React.Component {
             <tbody > 
               <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
               <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
-              <i class="bars icon" onClick={()=>{setTimeout(this.props.submit(this.props.coords), 1000)}} ></i>
+              <i class="flag checkered icon" style={{minwidth: "100px"} }onClick={()=>{setTimeout(this.props.submit(this.props.coords), 1000)}} ></i>
             </tbody>
           </table>
           

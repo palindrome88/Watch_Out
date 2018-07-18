@@ -2,20 +2,31 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: black;
 }
 
 div.ui.fluid.four.item.menu{
   display: flex !important;
-  position: fixed !important;
+  
+  top: 1000px;
+  right: 30px;
   bottom: 0 !important;
-  width: 100% !important;
-  justify-content: center !important;
+  
+  justify-content: space-evenly !important;
 }
-
+div.ui.basic.segment{
+  height: 500px !important;
+  width: auto;
+}
 div.ui.segment.pushable{
   height: 1103px !important;
+  background-color: rgb(27,28,29) !important;
 }
-
+.map{
+  position: relative !important;
+  width: 1100px !important;
+  
+}
 div.ui.inverted.vertical.labeled.icon.ui.overlay.left.thin.visible.sidebar.menu{
 
   height: 1060px !important;
@@ -46,3 +57,4 @@ div.ui.inverted.vertical.labeled.icon.ui.overlay.left.thin.visible.sidebar.menu{
     filter:invert(100%) !important;
 
 }
+
