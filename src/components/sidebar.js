@@ -6,7 +6,8 @@ import Search from './search';
 import Login from './login';
 import GeoLocation from './Geolocation';
 import { loginWithGoogle, logout  } from '../config/auth';
-
+import '../App.css'
+import Logo from "../images/poop-emoji2.png"
 var $ = require("jquery");
 let urlString =`https://data.nashville.gov/resource/xbru-cfzi.json?`
 
@@ -179,13 +180,14 @@ handleAddItem(newItem) {
     const { visible } = this.state
 
     
-    if(this.state.windowPane === 0){ // MENU ----------
-        return (
-            <div>
-            <p id="demo"></p>
-              
+    if(this.state.windowPane === 0){ //  ---------- MENU  ----------
+      return (
+        <div>
               <Sidebar.Pushable as={Segment}>
-                WATCH OUT! 0
+              <div style={{display: "flex", alignContent: "center"}}>
+              <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1>
+              <img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
+                </div>
                 <Sidebar
                   as={Menu}
                   animation='overlay'
@@ -213,16 +215,15 @@ handleAddItem(newItem) {
       
                 <Sidebar.Pusher dimmed={visible}>
                   <Segment basic>
-                  <MapComponent uid={this.state.uid}  apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
+                  <MapComponent uid={this.state.uid} style={{ borderRadius: "15px"}} apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
                       </MapComponent>
-                  <Menu fluid widths={4}>
+                  <Menu fluid widths={4} style={{padding: "0px", width: "300px", display: "flex", position: "absolute",left: "14px", top: "850.25px"}}>
                     
-                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
-                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1}></i>
-                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} ></i>
+                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} style={{position: "relative", left : "3.5em"}}></i>
+                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "3.5em"}}></i>
+                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} style={{position: "relative", left : "3.5em"}} ></i>
                     
                   </Menu>
-                    
                   </Segment>
                 </Sidebar.Pusher>
               </Sidebar.Pushable>
@@ -231,12 +232,12 @@ handleAddItem(newItem) {
 
           
     }
-    if (this.state.windowPane === 1){ // ---------------SEARCH
+    if (this.state.windowPane === 1){ // ---------- SEARCH ----------
         return (
             <div>
               
               <Sidebar.Pushable as={Segment}>
-                WATCH OUT! 1
+              <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
                 <Sidebar
                   as={Menu}
                   animation='overlay'
@@ -247,16 +248,13 @@ handleAddItem(newItem) {
                   visible={visible}
                   width='thin'
                 >
-                  <Menu.Item as='a'> {/*                    NAVIGATION                       */}
-                    <GeoLocation submit={this.handleGeolocation}  ></GeoLocation>
-                  </Menu.Item>
                   <Menu.Item as='a'>
                     <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)} state={this.state}></Search>
                   </Menu.Item>
-                  <Menu.Item as='a'>
-                    <Icon name='bomb'onClick={this.getMapData}  />
-                    Flooded Area
+                  <Menu.Item as='a'> {/*                    NAVIGATION                       */}
+                    <GeoLocation submit={this.handleGeolocation}  style={{margin: "auto"}}></GeoLocation>
                   </Menu.Item>
+                  
                   <Menu.Item as='a'>
                     <i class="window close icon" onClick={this.handleButtonClick} />
                     Close
@@ -265,12 +263,12 @@ handleAddItem(newItem) {
       
                 <Sidebar.Pusher dimmed={visible}>
                   <Segment basic>
-                  <MapComponent uid={this.state.uid}  apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
+                  <MapComponent uid={this.state.uid} style={{width: "300px", height: "300px", borderRadius: "15px"}} apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
                       </MapComponent>
-                <Menu fluid widths={4}>
-                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
-                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1}></i>
-                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} ></i>    
+                <Menu fluid widths={4} style={{padding: "0px", width: "300px", display: "flex", position: "absolute", top: "850.25px"}}>
+                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0}  style={{position: "relative", left : "3.5em"}}></i>
+                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "3.5em"}}></i>
+                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2}  style={{position: "relative", left : "3.5em"}}></i>    
                 </Menu>
                     
                   </Segment>
@@ -279,51 +277,51 @@ handleAddItem(newItem) {
             </div>
           )
       }
-      if (this.state.windowPane === 2){ // ---------- PROFILE
-        return (
-            <div>
-              
-              <Sidebar.Pushable as={Segment}>
-                WATCH OUT! 2
-                <Sidebar
-                  as={Menu}
-                  animation='overlay'
-                  icon='labeled'
-                  inverted
-                  onHide={this.handleSidebarHide}
-                  vertical
-                  visible={visible}
-                  width='thin'
-                >
-                  <Menu.Item as='a'>
-              <i class="google icon" name='male'onClick={() => this.authenticate('google')} credentials={this.state}></i>
-                Login to Google!
-                </Menu.Item>
+    if (this.state.windowPane === 2){ // ---------- PROFILE ----------
+      return (
+          <div>
+            
+            <Sidebar.Pushable as={Segment}>
+            <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
+              <Sidebar
+                as={Menu}
+                animation='overlay'
+                icon='labeled'
+                inverted
+                onHide={this.handleSidebarHide}
+                vertical
+                visible={visible}
+                width='thin'
+              >
                 <Menu.Item as='a'>
-                  <i class="sign-out alternate icon" name='bomb' onClick={() => this.logoutApp('google')}></i>
-                  Google Logout 
-                </Menu.Item>
-                <Menu.Item as='a'>
-                  <i class="window close icon" name='bomb' onClick={this.handleButtonClick}></i>
-                  Close 
-                </Menu.Item>
-                </Sidebar>
-      
-                <Sidebar.Pusher dimmed={visible}>
-                  <Segment basic>
-                  <MapComponent uid={this.state.uid}  apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
-                      </MapComponent>
-                <Menu fluid widths={4}>
-                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} ></i>
-                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1}></i>
-                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} ></i>   
-                </Menu>
-                    
-                  </Segment>
-                </Sidebar.Pusher>
-              </Sidebar.Pushable>
-            </div>
-          )
-      }
+            <i class="google icon" name='male'onClick={() => this.authenticate('google')} credentials={this.state}></i>
+              Login to Google!
+              </Menu.Item>
+              <Menu.Item as='a'>
+                <i class="sign-out alternate icon" name='bomb' onClick={() => this.logoutApp('google')}></i>
+                Google Logout 
+              </Menu.Item>
+              <Menu.Item as='a'>
+                <i class="window close icon" name='bomb' onClick={this.handleButtonClick}></i>
+                Close 
+              </Menu.Item>
+              </Sidebar>
+    
+              <Sidebar.Pusher dimmed={visible}>
+                <Segment basic>
+                <MapComponent uid={this.state.uid} style={{width: "300px", height: "300px", borderRadius: "15px"}} apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
+                    </MapComponent>
+              <Menu fluid widths={4} style={{padding: "0px", width: "300px", display: "flex", position: "absolute", top: "850.25px"}}>
+                  <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0}  style={{position: "relative", left : "3.5em"}}></i>
+                  <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "3.5em"}}></i>
+                  <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2}  style={{position: "relative", left : "3.5em"}}></i>   
+              </Menu>
+                  
+                </Segment>
+              </Sidebar.Pusher>
+            </Sidebar.Pushable>
+          </div>
+        )
+    }
   }
 }
