@@ -24,14 +24,17 @@ div.ui.segment.pushable{
 }
 .map{
   position: relative !important;
-  width: 1100px !important;
   
 }
 div.ui.inverted.vertical.labeled.icon.ui.overlay.left.thin.visible.sidebar.menu{
 
   height: 1060px !important;
-  max-width: 300px !important;
   
+  
+}
+.ui.menu.fluid{
+
+  width: 97% !important;
 }
 .ui.sidebar.visible { 
 
