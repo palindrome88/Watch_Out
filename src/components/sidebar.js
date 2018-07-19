@@ -122,7 +122,16 @@ componentDidMount () {
 
   logoutApp(){
     console.log('logout function running');
-    logout();
+    logout().then(()=>{
+      this.setState({
+        authed: false,
+        uid: null,
+        email: null,
+        name: null
+      })
+
+    })
+
   }
 
 handleGeolocation = (item) => {
@@ -314,14 +323,19 @@ handleAddItem(newItem) {
                 visible={visible}
                 width='thin'
               >
-                <Menu.Item as='a'>
-            <i class="google icon" name='male'onClick={() => this.authenticate('google')} credentials={this.state}></i>
-              Login to Google!
-              </Menu.Item>
-              <Menu.Item as='a'>
+              {
+                
+                !this.state.authed ? (<Menu.Item as='a'>
+                <i class="google icon" name='male'onClick={() => this.authenticate('google')} credentials={this.state}></i>
+                  Login to Google!
+                  </Menu.Item>):<Menu.Item as='a'>
                 <i class="sign-out alternate icon" name='bomb' onClick={() => this.logoutApp('google')}></i>
                 Google Logout 
               </Menu.Item>
+
+              }
+                
+              
               <Menu.Item as='a'>
                 <i class="window close icon" name='bomb' onClick={this.handleButtonClick}></i>
                 Close 
