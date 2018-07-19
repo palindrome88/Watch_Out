@@ -48,6 +48,8 @@ compositeLoginSubmitFunction() {
 
 }
 componentDidMount () {
+  document.title = "Watch Out";
+  
     console.log("login mounted");
     this.authListener = rebase.initializedApp.auth().onAuthStateChanged((user) =>{
   
@@ -182,7 +184,13 @@ handleAddItem(newItem) {
     
     if(this.state.windowPane === 0){ //  ---------- MENU  ----------
       return (
-        <div>
+            <div>
+              <div class="ui message" style={{width: "250px", height: "250px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
+              <div class="header">
+                Welcome back!
+              </div>
+              <p>This is a prototype of a future working application. Right now, you are on the menu page.</p>
+            </div>
               <Sidebar.Pushable as={Segment}>
               <div style={{display: "flex", alignContent: "center"}}>
               <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1>
@@ -236,6 +244,13 @@ handleAddItem(newItem) {
         return (
             <div>
               
+                <div class="ui message" style={{width: "250px", height: "250px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
+                <div class="header">
+                  Welcome back!
+                </div>
+                <p>This is a prototype of a future working application. Right now, you are on the search page.</p>
+              </div>
+              
               <Sidebar.Pushable as={Segment}>
               <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
                 <Sidebar
@@ -281,6 +296,12 @@ handleAddItem(newItem) {
       return (
           <div>
             
+              <div class="ui message" style={{width: "250px", height: "250px", left: "100px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
+              <div class="header">
+                Welcome back!
+              </div>
+              <p>This is a prototype of a future working application. Right now, you are on the profile page.</p>
+            </div>
             <Sidebar.Pushable as={Segment}>
             <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
               <Sidebar
