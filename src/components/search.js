@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Input } from 'semantic-ui-react';
+
 
 
 export default class Search extends Component {

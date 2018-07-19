@@ -1,6 +1,6 @@
 import React from 'react';
 import {geolocated, geoPropTypes} from 'react-geolocated';
-import {Icon} from'semantic-ui-react';
+
 class Geolocation extends React.Component {
 
    

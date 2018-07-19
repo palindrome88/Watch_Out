@@ -3,13 +3,12 @@ import {rebase, base} from '../config/constants';
 import { Icon,  Menu, Segment, Sidebar } from 'semantic-ui-react';
 import MapComponent from './MapComponent';
 import Search from './search';
-import Login from './login';
 import GeoLocation from './Geolocation';
 import { loginWithGoogle, logout  } from '../config/auth';
 import '../App.css'
 import Logo from "../images/poop-emoji2.png"
-var $ = require("jquery");
-let urlString =`https://data.nashville.gov/resource/xbru-cfzi.json?`
+
+
 
 
 
@@ -50,7 +49,7 @@ compositeLoginSubmitFunction() {
 componentDidMount () {
   document.title = "Watch Out";
   
-    console.log("login mounted");
+    
     this.authListener = rebase.initializedApp.auth().onAuthStateChanged((user) =>{
   
       if (user) {
@@ -85,13 +84,13 @@ componentDidMount () {
     context: this,
     asArray: true,
     then(data){
-        console.log("Raw Data", data, this.state.uid);
+        
       data = Object.values(data);
       data = Object.values(data);
       data = Object.values(data);
       data.forEach((item)=>{
 
-        console.log(Object.values(item)[0]);
+        
         //temp.push(Object.keys(item)[0]);
         
         this.setState({
@@ -106,22 +105,22 @@ componentDidMount () {
  
 
   componentWillUnmount () {
-    console.log("login will unmount");
+    
     this.authListener();
   }
 
   authenticate(){
-    console.log('authentication function running');
+    
     loginWithGoogle()
     .then(() => {
         this.setState({
             authed: true
         });
-    }, console.log("To check", this.state));
+    });
   }
 
   logoutApp(){
-    console.log('logout function running');
+    
     logout().then(()=>{
       this.setState({
         authed: false,
@@ -136,7 +135,7 @@ componentDidMount () {
 
 handleGeolocation = (item) => {
 
-    console.log("Fired.", this.state);
+    
     this.setState({
       latitude: item.latitude,
       longitude: item.longitude
@@ -144,9 +143,9 @@ handleGeolocation = (item) => {
     base.push('coordinates', {
       data: { [this.state.uid] : {Obstacle: this.state.Obstacle, email: this.state.email, lat: JSON.stringify(item.latitude), long: JSON.stringify(item.longitude)}},
       then(err){
-        console.log("The result is this", err);
+        
     }
-  }, console.log(this.state.uid));
+  }, );
 
     
 }
@@ -154,19 +153,19 @@ handleGeolocation = (item) => {
 
 
 compositeFunction0 = () => {
-      console.log("Panel MENU.");
+      
       this.handleButtonClick();
       this.handleWindowPane0();
   }
 
 compositeFunction1 = () => {
-    console.log("Panel SEARCH.");
+    
     this.handleButtonClick();
     this.handleWindowPane1();
 }
 
 compositeFunction2 = () => {
-        console.log("Panel PROFILE.");
+        
         this.handleButtonClick();
         this.handleWindowPane2();
 }
@@ -194,8 +193,8 @@ handleAddItem(newItem) {
     if(this.state.windowPane === 0){ //  ---------- MENU  ----------
       return (
             <div>
-              <div class="ui message" style={{width: "250px", height: "250px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
-              <div class="header">
+              <div className="ui message" style={{width: "250px", height: "250px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
+              <div className="header">
                 Welcome back!
               </div>
               <p>This is a prototype of a future working application. Right now, you are on the menu page.</p>
@@ -224,7 +223,7 @@ handleAddItem(newItem) {
                     Flooded Area
                   </Menu.Item>
                   <Menu.Item as='a'>
-                  <i class="window close icon" onClick={this.handleButtonClick} />
+                  <i className="window close icon" onClick={this.handleButtonClick} />
                     Close
                   </Menu.Item>
                   
@@ -236,9 +235,9 @@ handleAddItem(newItem) {
                       </MapComponent>
                   <Menu fluid widths={4} style={{padding: "0px", width: "300px", display: "flex", position: "absolute",left: "14px", top: "850.25px"}}>
                     
-                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} style={{position: "relative", left : "3.5em"}}></i>
-                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "3.5em"}}></i>
-                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} style={{position: "relative", left : "3.5em"}} ></i>
+                    <i className="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} style={{position: "relative", left : "3.5em"}}></i>
+                    <i className="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "3.5em"}}></i>
+                    <i className="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} style={{position: "relative", left : "3.5em"}} ></i>
                     
                   </Menu>
                   </Segment>
@@ -253,15 +252,16 @@ handleAddItem(newItem) {
         return (
             <div>
               
-                <div class="ui message" style={{width: "250px", height: "250px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
-                <div class="header">
+                <div className="ui message" style={{width: "250px", height: "250px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
+                <div className="header">
                   Welcome back!
                 </div>
                 <p>This is a prototype of a future working application. Right now, you are on the search page.</p>
               </div>
               
               <Sidebar.Pushable as={Segment}>
-              <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
+              <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1>
+              <img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
                 <Sidebar
                   as={Menu}
                   animation='overlay'
@@ -290,9 +290,9 @@ handleAddItem(newItem) {
                   <MapComponent uid={this.state.uid} style={{width: "300px", height: "300px", borderRadius: "15px"}} apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
                       </MapComponent>
                 <Menu fluid widths={4} style={{padding: "0px", width: "300px", display: "flex", position: "absolute", top: "850.25px"}}>
-                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0}  style={{position: "relative", left : "3.5em"}}></i>
-                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "3.5em"}}></i>
-                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2}  style={{position: "relative", left : "3.5em"}}></i>    
+                    <i className="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0}  style={{position: "relative", left : "3.5em"}}></i>
+                    <i className="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "3.5em"}}></i>
+                    <i className="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2}  style={{position: "relative", left : "3.5em"}}></i>    
                 </Menu>
                     
                   </Segment>
@@ -304,7 +304,6 @@ handleAddItem(newItem) {
     if (this.state.windowPane === 2){ // ---------- PROFILE ----------
       return (
           <div>
-            
               <div class="ui message" style={{width: "250px", height: "250px", left: "100px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
               <div class="header">
                 Welcome back!
@@ -312,7 +311,8 @@ handleAddItem(newItem) {
               <p>This is a prototype of a future working application. Right now, you are on the profile page.</p>
             </div>
             <Sidebar.Pushable as={Segment}>
-            <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
+            <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1>
+            <img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
               <Sidebar
                 as={Menu}
                 animation='overlay'
