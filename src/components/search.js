@@ -22,7 +22,7 @@ export default class Search extends Component {
             <input type="text" 
             ref="newItem"
             className="form-control"
-            placeholder="Name your obstacle!"
+            placeholder="Name your obstacle! Press Enter to Bind."
             onKeyDown={this.handleSubmit.bind(this)} >
             </input>
             
