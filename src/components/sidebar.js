@@ -183,11 +183,8 @@ handleAddItem(newItem) {
     if(this.state.windowPane === 0){ //  ---------- MENU  ----------
         return (
             <div>
-              
-            <p id="demo"></p>
-              
               <Sidebar.Pushable as={Segment}>
-              <h1 style={{font:"Courier New", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
+              <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
                 <Sidebar
                   as={Menu}
                   animation='overlay'
@@ -215,13 +212,13 @@ handleAddItem(newItem) {
       
                 <Sidebar.Pusher dimmed={visible}>
                   <Segment basic>
-                  <MapComponent uid={this.state.uid} style={{width: "300px", height: "300px", borderRadius: "15px"}} apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
+                  <MapComponent uid={this.state.uid} style={{ borderRadius: "15px"}} apiData = {this.state.apiData} firebaseData={this.state.firebaseData} apiCalled={this.state.apiCalled} firebaseLoaded={this.state.firebaseLoaded}>
                       </MapComponent>
-                  <Menu fluid widths={4} style={{padding: "0px", width: "300px", position: "absolute", top: "850.25px"}}>
+                  <Menu fluid widths={4} style={{padding: "0px", width: "300px", position: "absolute",left: "14px", top: "850.25px"}}>
                     
-                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} style={{position: "relative", left : "3em"}}></i>
-                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "3em"}}></i>
-                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} style={{position: "relative", left : "3em"}} ></i>
+                    <i class="bars icon" name='menu' active={activeItem === 'MENU '} onClick={this.compositeFunction0} style={{position: "relative", left : "5em"}}></i>
+                    <i class="search icon" name='search' active={activeItem === 'SEARCH'} onClick={this.compositeFunction1} style={{position: "relative", left : "5em"}}></i>
+                    <i class="user circle outline icon" name='profile' active={activeItem === 'PROFILE'} onClick={this.compositeFunction2} style={{position: "relative", left : "5em"}} ></i>
                     
                   </Menu>
                     
@@ -238,7 +235,7 @@ handleAddItem(newItem) {
             <div>
               
               <Sidebar.Pushable as={Segment}>
-              <h1 style={{font:"Courier New", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px"}} />
+              <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
                 <Sidebar
                   as={Menu}
                   animation='overlay'
@@ -253,7 +250,7 @@ handleAddItem(newItem) {
                     <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)} state={this.state}></Search>
                   </Menu.Item>
                   <Menu.Item as='a'> {/*                    NAVIGATION                       */}
-                    <GeoLocation submit={this.handleGeolocation}  ></GeoLocation>
+                    <GeoLocation submit={this.handleGeolocation}  style={{margin: "auto"}}></GeoLocation>
                   </Menu.Item>
                   <Menu.Item as='a'>
                     <Icon name='bomb'onClick={this.getMapData}  />
@@ -286,7 +283,7 @@ handleAddItem(newItem) {
           <div>
             
             <Sidebar.Pushable as={Segment}>
-            <h1 style={{font:"Courier New", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px"}} />
+            <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1><img src={Logo} style={{height: "5em", width: "5em", position: "relative", left: "550px", display: "inline-block"}} />
               <Sidebar
                 as={Menu}
                 animation='overlay'

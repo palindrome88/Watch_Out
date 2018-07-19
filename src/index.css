@@ -29,6 +29,7 @@ div.ui.segment.pushable{
 div.ui.inverted.vertical.labeled.icon.ui.overlay.left.thin.visible.sidebar.menu{
 
   height: 1060px !important;
+  width: 50% !important;
   
   
 }

@@ -99,7 +99,7 @@ export class MapContainer extends Component {
             return (
                 
                     <div>
-                        <Map style={{minWidth: "100px",minHeight: "850px"}} google={this.props.google} zoom={15} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
+                        <Map style={{Width: "80px",minHeight: "850px"}} google={this.props.google} zoom={15} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
                                 <Marker  title={'Flooded trail'} onClick={this.onMarkerClick} position={{ lat: 36.172510, lng: -86.710219 }} />
                                 <Marker title={'High traffic area'} onClick={this.onMarkerClick} position={{ lat: 36.173139, lng: -86.708651 }} />
                                 <Marker  title={'Dog Waste'} onClick={this.onMarkerClick} position={{ lat: 36.174605, lng: -86.707057 }} />

@@ -14,11 +14,13 @@ class Geolocation extends React.Component {
         ? <div>Geolocation is not enabled</div>
         : this.props.coords
           ?
-          <table> <div>Your approximate location is...</div>
+          <table style={{margin: "auto"}}> <div>Your approximate location is...</div>
             <tbody > 
-              <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
-              <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
-              <i class="flag checkered icon" style={{minwidth: "100px"} }onClick={()=>{setTimeout(this.props.submit(this.props.coords), 1000)}} ></i>
+              <tr style={{margin: "auto"}}><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
+              <tr style={{margin: "auto"}}><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
+              <button class="ui button" style={{minwidth: "100px", margin: "auto"} }onClick={()=>{setTimeout(this.props.submit(this.props.coords), 1000)}} >
+                Submit 
+              </button>
             </tbody>
           </table>
           
