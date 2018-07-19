@@ -97,37 +97,21 @@ export class MapContainer extends Component {
         
         if(!this.state.apiCalled){
             return (
-                <div>
-                    <Map style={{minWidth: "100px",minHeight: "850px"}} google={this.props.google} zoom={13} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
-                    </Map>
-                </div>
+                
+                    <div>
+                        <Map style={{minWidth: "100px",minHeight: "850px"}} google={this.props.google} zoom={15} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
+                                <Marker  title={'Flooded trail'} onClick={this.onMarkerClick} position={{ lat: 36.172510, lng: -86.710219 }} />
+                                <Marker title={'High traffic area'} onClick={this.onMarkerClick} position={{ lat: 36.173139, lng: -86.708651 }} />
+                                <Marker  title={'Dog Waste'} onClick={this.onMarkerClick} position={{ lat: 36.174605, lng: -86.707057 }} />
+                                <Marker  title={'Crazy Wildlife'} onClick={this.onMarkerClick} position={{ lat: 36.177076, lng: -86.704522 }} />
+    
+                        </Map>
+                    </div>
+                
             );
         }
 
-        if(this.state.firebaseLoaded){
-            return (
-                <div>
-                    <Map style={{minWidth: "100px",minHeight: "1100px"}} google={this.props.google} zoom={13} className={"map"} initialCenter={{lat:36.1762939 , lng: -86.712875}} >
-                    {
-                       temp.map((item, index) => (
-                       
-                            <Marker key={index} title={`${item.Obstacle}`} 
-                            onClick={this.onMarkerClick} 
-                            position={{ lat: parseFloat(item.lat), lng: parseFloat(item.long) }} 
-                            />
-                        
-                         ))
-                     }
-                    
-                    
-                    </Map>
-                </div>
-            );
-        }
-
-        if(this.state.apiCalled && this.state.firebaseLoaded){
-
-        }
+        
     }
 } export default GoogleApiWrapper({
     apiKey: "AIzaSyAwYEpeFJdwyVCIlsnQZgmKQLGpi-qqYk4",
