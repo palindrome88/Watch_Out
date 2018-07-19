@@ -27,5 +27,5 @@
     "react-styleguidist": "^7.0.20",
     "webpack": "^3.8.1"
   },
-  "homepage": "http://palindrome88.github.io/Watch_Out/"
+  "homepage": "http://palindrome88.github.io/Watch_Out/src/"
 }
