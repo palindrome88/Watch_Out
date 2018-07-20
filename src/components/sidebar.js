@@ -216,10 +216,7 @@ handleAddItem(newItem) {
                     <Icon name='umbrella'onClick={this.handleButtonClick}  />
                     Flooded Area
                   </Menu.Item>
-                  <Menu.Item as='a'>
-                  <i className="window close icon" onClick={this.handleButtonClick} />
-                    Close
-                  </Menu.Item>
+                  
                   
                 </Sidebar>
       
@@ -273,10 +270,7 @@ handleAddItem(newItem) {
                     <GeoLocation submit={this.handleGeolocation} close={this.handleButtonClick} style={{margin: "auto"}}></GeoLocation>
                   </Menu.Item>
                   
-                  <Menu.Item as='a'>
-                    <i class="window close icon" onClick={this.handleButtonClick} />
-                    Close
-                  </Menu.Item>
+                  
                 </Sidebar>
       
                 <Sidebar.Pusher dimmed={visible}>
