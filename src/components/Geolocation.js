@@ -3,7 +3,9 @@ import {geolocated, geoPropTypes} from 'react-geolocated';
 
 class Geolocation extends React.Component {
 
-   
+   constructor(props){
+     super(props)
+   }
    
   render() {
     
@@ -18,7 +20,7 @@ class Geolocation extends React.Component {
             <tbody > 
               <tr style={{margin: "auto"}}><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
               <tr style={{margin: "auto"}}><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
-              <button class="ui button" style={{minwidth: "100px", margin: "auto"} }onClick={()=>{setTimeout(this.props.submit(this.props.coords), 1000)}} >
+              <button class="ui button" style={{minwidth: "100px", margin: "auto"} }onClick={()=>{setTimeout(this.props.submit(this.props.coords), 1000), this.props.close()}}  >
                 Submit 
               </button>
             </tbody>

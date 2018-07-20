@@ -9,9 +9,6 @@ import '../App.css'
 import Logo from "../images/poop-emoji2.png"
 
 
-
-
-
 export default class SidebarExampleDimmed extends Component {
     constructor(props){
         super(props)
@@ -33,9 +30,6 @@ export default class SidebarExampleDimmed extends Component {
     
 handleButtonClick = () => {
   this.setState({ visible: !this.state.visible });
-
-  ///// API Call Data
- 
 }
 handleSidebarHide = () => this.setState({ visible: false })
     
@@ -195,9 +189,9 @@ handleAddItem(newItem) {
             <div>
               <div className="ui message" style={{width: "250px", height: "250px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
               <div className="header">
-                Welcome back!
+                Welcome!
               </div>
-              <p>This is a prototype of a future working application. Right now, you are on the menu page.</p>
+              <p>This is a prototype of a future working application. Right now, you are on the menu page. In version 2, click the left button to hone the results of obstacles to a specific type. The map shows four obstacles on a trail.</p>
             </div>
               <Sidebar.Pushable as={Segment}>
               <div style={{display: "flex", alignContent: "center"}}>
@@ -254,9 +248,9 @@ handleAddItem(newItem) {
               
                 <div className="ui message" style={{width: "250px", height: "250px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
                 <div className="header">
-                  Welcome back!
+                  Save obstacles to avoid those trouble areas later.
                 </div>
-                <p>This is a prototype of a future working application. Right now, you are on the search page.</p>
+                <p>This is a prototype of a future working application. Right now, you are on the search page. On clicking the middle button, you can add an obstacle that does not currently render on the map (Verson 2).</p>
               </div>
               
               <Sidebar.Pushable as={Segment}>
@@ -276,7 +270,7 @@ handleAddItem(newItem) {
                     <Search submit={this.handleButtonClick} add={this.handleAddItem.bind(this)} state={this.state}></Search>
                   </Menu.Item>
                   <Menu.Item as='a'> {/*                    NAVIGATION                       */}
-                    <GeoLocation submit={this.handleGeolocation}  style={{margin: "auto"}}></GeoLocation>
+                    <GeoLocation submit={this.handleGeolocation} close={this.handleButtonClick} style={{margin: "auto"}}></GeoLocation>
                   </Menu.Item>
                   
                   <Menu.Item as='a'>
@@ -306,9 +300,9 @@ handleAddItem(newItem) {
           <div>
               <div class="ui message" style={{width: "250px", height: "250px", left: "100px", left: "500px", bottom: "500px", position: "absolute", zIndex: "5"}}>
               <div class="header">
-                Welcome back!
+                Log in for your individual results.
               </div>
-              <p>This is a prototype of a future working application. Right now, you are on the profile page.</p>
+              <p>This is a prototype of a future working application. Right now, you are on the profile page. Click Google Login to log in with Google.</p>
             </div>
             <Sidebar.Pushable as={Segment}>
             <h1 style={{font:"Courier New", fontSize: "3vw", color: "white", position: "relative", left: "530px", display: "inline-block"}}>Watch Out!</h1>
@@ -329,7 +323,7 @@ handleAddItem(newItem) {
                 <i class="google icon" name='male'onClick={() => this.authenticate('google')} credentials={this.state}></i>
                   Login to Google!
                   </Menu.Item>):<Menu.Item as='a'>
-                <i class="sign-out alternate icon" name='bomb' onClick={() => this.logoutApp('google')}></i>
+                <i class="sign-out alternate icon" name='bomb' onClick={() => {this.logoutApp('google'), this.handleButtonClick()}}></i>
                 Google Logout 
               </Menu.Item>
 
