@@ -1,6 +1,6 @@
 import Rebase from 're-base'
 import firebase from 'firebase'
-import database from 'firebase/database'
+
 
 
 var config = {
